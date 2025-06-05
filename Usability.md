@@ -15,9 +15,7 @@ The Remote User Interface (RUI) is intended for educational use by air traffic c
   Enable smooth operation despite network or hardware disruptions.
 
 # Design Objective
-To design an intuitive and responsive flight tracking system that empowers users to effortlessly monitor,
-analyze, and interact with real-time and recorded aircraft data, while minimizing interruptions and preserving
-user preferences for a smooth and efficient experience.
+Design a responsive and intuitive system that enables efficient analysis of aircraft data, while ensuring minimal disruption and persistent user preferences.
 
 # Usability Tactics
 - **Pause/Resume**  
@@ -74,7 +72,7 @@ Modifiability	Easier to change within UI component	More complex; source and UI m
   - There is flexibility and capability to modify the Raspberry Pi software.
   - Close coordination between source and UI is manageable.
 
-### 🎯 Final Recommendation
+### 🏁 Conclusion & Recommendation
 After evaluating both architectural approaches against key quality attributes — **performance**, **resiliency**, **extensibility**, and **modifiability** — the recommended solution for implementing Pause/Play functionality is:
 > ✅ **Deferred Data Rendering**
 
@@ -123,6 +121,6 @@ After evaluating both architectural approaches against key quality attributes �
   - The network is reliable, and cloud integration is acceptable.
   - You want to **centralize configuration management**.
 
-### 🎯 Final Recommendation
+### 🏁 Conclusion & Recommendation
 After evaluating both architectural approaches against key quality attributes — **performance**, **resiliency**, **extensibility**, and **modifiability** — the recommended solution for implementing the Maintain User Model functionality is:
 > ✅ **Local Settings Persistence (UI-based)**
