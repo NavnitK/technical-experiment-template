@@ -1,22 +1,22 @@
 # 🧩 Modifiability Quality Attribute Requirement
 
 ## Problem Statement  
-The system should support easy integration of new features and changes (e.g., detection modules, UI components like maps) without requiring major rewrites or introducing regressions. It must be adaptable to evolving requirements and developer environments.
+The Remote User Interface (RUI) should support easy integration of new features and changes (e.g., detection modules, UI components like maps) without major rewrites or regressions. It must be adaptable to evolving requirements and developer environments, specifically within the VCL C++ Builder framework.
 
 ## Specific Modifiability Issues to Solve  
 - **Adding New Functionalities**  
-  Allow plug-and-play integration of features like aircraft anomaly detection.  
+  Allow plug-and-play integration of features such as aircraft anomaly detection modules into the RUI.  
 - **Swapping Components**  
-  Make components like the map service easily replaceable without breaking the UI.
+  Make components such as the map provider easily replaceable in the VCL-based RUI without breaking existing functionality.
 
 ## Design Objective  
-Create a system architecture that separates concerns, encourages modularity, and minimizes interdependencies, allowing safe and efficient modifications or extensions.
+Create a modular system architecture that separates concerns, encourages clean interfaces, and minimizes interdependencies, allowing safe and efficient modifications or extensions to the VCL-based RUI.
 
 ## Usability Tactics  
 - **Extensible Feature Integration**  
-  Design the system to allow new detection modules or features to be added with minimal impact on existing code.  
+  Design the RUI so new detection modules or features can be added with minimal impact on existing code.  
 - **Swappable Components**  
-  Architect components such as the map provider to be easily replaceable with minimal code changes and risk.
+  Architect components such as the map provider to be replaceable within the VCL UI with minimal code changes and risk.
 
 ---
 
@@ -25,47 +25,46 @@ Create a system architecture that separates concerns, encourages modularity, and
 - **Source**  
   Developer  
 - **Stimulus**  
-  Add anomaly detection feature  
+  Add anomaly detection feature to the RUI  
 - **Artifact**  
-  Aircraft data processing and UI display  
+  Aircraft data processing and UI display components in the VCL RUI  
 - **Environment**  
-  During iterative development  
+  During iterative development and maintenance  
 - **Response**  
-  New detection module is added with minimal changes to existing code  
+  New detection module integrates with minimal changes and no regressions  
 - **Response Measure**  
-  No regression bugs, integration completed in under one day  
+  Integration completed within a day; no new defects introduced  
 
-### 🛠 Approach 1: Plug-in Architecture (Microkernel)
-- Separate core processing from optional modules.
-- Each module implements a shared interface.
-- New detectors (e.g., flight zone violations) are added without modifying core logic.
+### 🛠 Approach 1: Plug-in Architecture (Microkernel)  
+- Core RUI separates core processing from optional detection modules via shared interfaces.  
+- Each new detection module (e.g., flight path deviation) implements a defined interface.  
+- New modules plugged in without changing core logic, enabling modular growth in the VCL environment.
 
 ### 🛠 Approach 2: Event-Driven Observer Model  
-- Core system emits aircraft tracking events.
-- Listeners (detection modules) subscribe and react to specific events.
-- Modules can be added or removed without altering the core emitter.
+- Core aircraft tracking logic in the RUI emits events.  
+- Detection modules subscribe as observers and react independently.  
+- Modules can be added or removed without changing core emitter code.
 
 ### ⚖️ Tradeoff Analysis
 
 | Quality Attribute | Plug-in Architecture             | Event-Driven Observer Model          |
 |-------------------|---------------------------------|-------------------------------------|
-| Performance       | Slight overhead for module calls | High performance                    |
-| Resiliency        | High isolation of faulty modules | Depends on observer error handling  |
-| Extensibility     | Very high, supports 3rd-party modules | High, event listeners easily added |
-| Modifiability     | Excellent, changes isolated       | Good, requires event contract management |
+| Performance       | Slight overhead for dynamic calls | High; lightweight event dispatching  |
+| Resiliency        | High isolation of faulty modules | Dependent on observer error handling  |
+| Extensibility     | Very high; supports 3rd-party modules | High; easy add/remove of listeners    |
+| Modifiability     | Excellent; isolated changes      | Good; requires event contract management |
 
 ### 🧠 Rationale for Approach Selection  
 - ✅ **Plug-in Architecture**  
-  - Frequent addition of new modules expected.  
+  - Matches modular design suited for VCL C++ Builder.  
   - Clear separation between core and extensions.  
   - **Patterns used:** Microkernel, Strategy  
 - ⚠️ **Event-Driven Observer Model**  
-  - Lightweight behavior injection.  
-  - System behavior driven by events.  
-  - **Patterns used:** Event-Driven, Observer  
+  - Lightweight and easy to extend.  
+  - **Patterns used:** Observer, Event-Driven  
 
 ### 🏁 Final Recommendation  
-> ✅ **Plug-in Architecture (Microkernel)** for modular growth and safe extensibility.
+> ✅ **Plug-in Architecture (Microkernel)** for modular, maintainable feature integration in the VCL RUI.
 
 ---
 
@@ -74,44 +73,44 @@ Create a system architecture that separates concerns, encourages modularity, and
 - **Source**  
   Developer  
 - **Stimulus**  
-  Switch from Mapbox to OpenLayers map provider  
+  Switch map provider from Mapbox to OpenLayers in the VCL RUI  
 - **Artifact**  
-  Map rendering module in UI  
+  Map rendering module within the VCL-based RUI  
 - **Environment**  
-  During platform upgrade or rebranding  
+  During UI upgrade or enhancement  
 - **Response**  
-  New map service integrates without affecting other UI parts  
+  New map provider integrates with minimal impact on other UI parts  
 - **Response Measure**  
-  Integration completed in under 4 hours; unrelated UI unaffected  
+  Integration completed under 4 hours; unrelated UI unaffected  
 
 ### 🛠 Approach 1: Adapter Pattern with Abstract Map Interface  
-- Define a `MapService` interface for UI components.  
-- Mapbox, OpenLayers, Leaflet implement this interface.  
-- Swap map providers by replacing implementation without affecting other code.
+- Define an abstract interface (`IMapProvider`) for map operations within the VCL RUI.  
+- Each map provider implements this interface.  
+- The VCL UI interacts through interface pointers, enabling seamless swapping.
 
-### 🛠 Approach 2: Plugin-based UI Components  
-- Treat maps as injectable UI plugins.  
-- Map modules register at runtime with a UI factory or slot.  
-- Decouples the map component from other system parts.
+### 🛠 Approach 2: Plugin-Based UI Components  
+- Package map providers as dynamically loadable VCL packages (BPL).  
+- Load map components at runtime, injecting them into the UI dynamically.  
+- Decouples map lifecycle from the core RUI.
 
 ### ⚖️ Tradeoff Analysis
 
 | Quality Attribute | Adapter + Interface             | Plugin-based UI Component           |
 |-------------------|--------------------------------|-----------------------------------|
-| Performance       | Very high, statically bound     | Slight runtime overhead            |
-| Resiliency        | High; map swap isolated         | High; maps are isolated modules    |
-| Extensibility     | Moderate; requires interface implementations | High; new maps self-register       |
-| Modifiability     | Easy; confined changes          | Very easy; no impact on other code |
+| Performance       | Very high; statically bound calls | Minor runtime overhead             |
+| Resiliency        | High; isolated implementation   | Moderate; possible load-time errors |
+| Extensibility     | Moderate; requires new implementations | High; supports runtime addition   |
+| Modifiability     | Easy; confined to adapter classes | More complex; requires runtime management |
 
 ### 🧠 Rationale for Approach Selection  
 - ✅ **Adapter Pattern with Interface Abstraction**  
-  - Prefer type-safe, static code.  
-  - Map provider unlikely to change often.  
+  - Fits VCL’s static typing and component model.  
+  - Easier debugging and maintenance.  
   - **Patterns used:** Adapter, Interface Segregation  
 - ⚠️ **Plugin-based Component**  
-  - Frequent UI plugin changes expected.  
-  - Need runtime flexibility.  
+  - Useful for runtime flexibility.  
+  - More complex lifecycle handling.  
   - **Patterns used:** Factory, Plugin  
 
 ### 🏁 Final Recommendation  
-> ✅ **Adapter Pattern with Interface Abstraction** for predictable and low-risk provider swapping.
+> ✅ **Adapter Pattern with Interface Abstraction** for stable, maintainable map provider swapping in the VCL RUI.
