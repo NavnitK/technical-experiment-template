@@ -64,10 +64,10 @@ Modifiability	Easier to change within UI component	More complex; source and UI m
 
 ### 🧠 Rationale for Approach Selection
 - ✅ **Deferred Data Rendering**  
-  - **Pattern Used:** Observer + Command Pattern
   - Continuous data capture is important, regardless of UI state.
   - Quick UI responsiveness with minimal complexity is required.
   - Modifications should be limited to the UI side.
+  - **Observer and Command pattern used:** 
 - ⚠️ **Adaptive Data Throttling at Source**  
   - Reducing unnecessary data transmission is important (e.g., bandwidth or power saving).
   - There is flexibility and capability to modify the Raspberry Pi software.
@@ -112,16 +112,16 @@ After evaluating both architectural approaches against key quality attributes �
 
 ### 🧠 Rationale for Approach Selection
 - ✅ **Choose _Local Settings Persistence_ if**:
-  - **Pattern Used:** Singleton + Repository Pattern
-  - You want a **lightweight and fast** solution.
+  - We need a **lightweight and fast** solution.
   - The system is **used on a single device** (e.g., student laptop).
   - Offline use and simplicity are more important than multi-user sync.
-  - You want to **avoid dependency on external services**.
+  - We want to **avoid dependency on external services**.
+  - **Singleton and Repository pattern Used** 
 - ⚠️ **Choose _Cloud-Based User Model_ if**:
-  - You need **settings to sync across devices or users**.
+  - We need **settings to sync across devices or users**.
   - The application will eventually be **multi-user or web-based**.
   - The network is reliable, and cloud integration is acceptable.
-  - You want to **centralize configuration management**.
+  - We want to **centralize configuration management**.
 
 ### 🏁 Conclusion & Recommendation
 After evaluating both architectural approaches against key quality attributes — **performance**, **resiliency**, **extensibility**, and **modifiability** — the recommended solution for implementing the Maintain User Model functionality is:
