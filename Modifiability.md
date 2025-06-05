@@ -1,66 +1,66 @@
 # 🧩 Modifiability Quality Attribute Requirement
 
 ## Problem Statement  
-The system should allow developers to switch the user interface application to use a different map provider (e.g., from the current Google Maps to another) with minimal code changes, low risk of introducing bugs, and without impacting unrelated parts of the system.
+The system should allow developers to integrate a new map provider into the user interface with minimal code changes, low risk of introducing bugs, and without affecting unrelated parts of the system.
 
 ## Specific Modifiability Issue to Solve  
-- **Swapping Map Providers**  
-  Enable easy replacement of the map component while keeping the rest of the UI stable and unaffected.
+- **Supporting Additional Map Providers**  
+  Enable integration of new map rendering services without disrupting existing UI components.
 
 ## Design Objective  
-Design the Remote User Interface (RUI) to have loosely coupled components with well-defined interfaces to isolate changes and make the map provider interchangeable with minimal effort.
+Design the Remote User Interface (RUI) to have loosely coupled components with well-defined interfaces to isolate changes and make new map providers easy to incorporate.
 
 ## Usability Tactics  
 - **Isolate Map Service**  
   Encapsulate all map-related functionality behind an abstract interface.  
 - **Dependency Injection**  
-  Use runtime injection to provide the specific map provider to the UI, allowing easy replacement.
+  Use runtime injection to provide the specific map provider to the UI, allowing easy integration of new services.
 
 ---
 
-## Quality Attribute Scenario: Swapping Map Provider
+## Quality Attribute Scenario: Add Support for New Map Provider
 
 - **Source**  
   Developer  
 - **Stimulus**  
-  Switch map provider from Google Maps to another provider  
+  Add a new map provider to the system  
 - **Artifact**  
   Map rendering module in the Remote User Interface (RUI)  
 - **Environment**  
-  During platform upgrade or component refactoring  
+  During iterative development or feature expansion  
 - **Response**  
-  New map provider integrates with minimal changes and no regressions in UI behavior  
+  The new map provider integrates seamlessly without affecting existing components  
 - **Response Measure**  
   Integration completed in under 4 hours; no unintended side effects observed  
 
 ### 🛠 Approach 1: Abstract Common Services with Map Interface  
-- Define a common abstract interface for map services that all map providers.  
-- The RUI depends only on this interface, allowing the map provider to be swapped.  
-- This reduces coupling between UI and map components and increases cohesion within map modules.  
+- Define a common abstract interface for map services that all map providers implement.  
+- The RUI interacts only with this interface, allowing developers to add new providers without modifying core UI logic.  
+- This reduces coupling between the UI and specific providers while improving cohesion within map modules.
 
 ### 🛠 Approach 2: Modularize Map Component with Dependency Injection  
-- Encapsulate the map logic into a separate module injected at runtime into the RUI.  
-- Changing the map provider involves injecting a new module conforming to the map interface without modifying the UI codebase.  
-- This defers binding decisions to runtime, increasing flexibility and minimizing code ripple effects.  
+- Encapsulate map logic into a standalone module injected at runtime into the RUI.  
+- New providers are integrated by injecting a module that adheres to the map interface.  
+- This defers binding decisions to runtime, enabling flexibility and clean separation of concerns.
 
 ### ⚖️ Tradeoff Analysis
 
 | Quality Attribute | Abstract Map Interface                | Dependency Injection Module          |
-|-------------------|------------------------------------|------------------------------------|
-| Performance       | Very high; static binding          | Slight overhead due to runtime binding |
-| Resiliency        | High; isolated map component       | High; modular and replaceable       |
-| Extensibility     | Moderate; requires interface updates| High; new modules can be added easily |
-| Modifiability     | Easy; confined to map interface     | Very easy; no UI changes required   |
+|-------------------|----------------------------------------|--------------------------------------|
+| Performance       | Very high; static binding              | Slight overhead due to runtime binding |
+| Resiliency        | High; isolated map component           | High; modular and replaceable         |
+| Extensibility     | Moderate; requires interface updates   | High; new modules can be added easily |
+| Modifiability     | Easy; confined to map interface        | Very easy; no UI changes required     |
 
 ### 🧠 Rationale for Approach Selection  
 - ✅ **Abstract Common Services with Map Interface**  
-  - Provides type safety and static guarantees.  
-  - Well suited when map provider changes are infrequent.  
-  - Encourages high cohesion within map functionality and reduces coupling to the UI.  
+  - Provides compile-time safety and clarity.  
+  - Ideal when new map providers are added occasionally.  
+  - Promotes high cohesion within mapping logic and minimizes dependencies.  
 - ⚠️ **Modularize Map Component with Dependency Injection**  
-  - Preferred if map providers are expected to change frequently or dynamically.  
-  - Adds runtime flexibility at a small performance cost.  
-  - Defers binding, easing future extensibility and maintenance.  
+  - Suitable when map providers need to be added or replaced frequently.  
+  - Increases flexibility through runtime configuration.  
+  - Keeps UI logic unchanged, improving long-term maintainability.
 
 ### 🏁 Final Recommendation  
-> ✅ **Abstract Common Services with Map Interface** to enable low-risk, maintainable map provider swapping with minimal code changes.
+> ✅ **Abstract Common Services with Map Interface** to enable structured, low-risk integration of new map providers without disrupting existing UI behavior.
