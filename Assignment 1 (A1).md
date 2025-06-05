@@ -7,12 +7,12 @@ Imagine you are the architect of a GPS navigation native mobile app (such as Nav
 ### **Answer 1**
 The three types of requirements are:
 1. **Functional Requirements**
-   *Example:* 
+   + The system shall allow users to receive real-time traffic updates 
 
-2. **Quality Attribute Requirements**
-   *Example:* .
+2. **Design Constraints**
+   + The system shall only interact with other systems via Publish/Subscribe 
 
-3. **Constraints**
+3. **Quality Attribute Requirements**
    *Example:* .
 
 ## **Question 2**
