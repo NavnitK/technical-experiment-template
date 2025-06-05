@@ -1,7 +1,7 @@
 # 🧩 Modifiability Quality Attribute Requirement
 
 ## Problem Statement  
-The system should allow developers to switch the user interface application to use a different map provider (e.g., from current VCL-based implementation to another) with minimal code changes, low risk of introducing bugs, and without impacting unrelated parts of the system.
+The system should allow developers to switch the user interface application to use a different map provider (e.g., from the current Google Maps to another) with minimal code changes, low risk of introducing bugs, and without impacting unrelated parts of the system.
 
 ## Specific Modifiability Issue to Solve  
 - **Swapping Map Providers**  
@@ -14,7 +14,7 @@ Design the Remote User Interface (RUI) to have loosely coupled components with w
 - **Isolate Map Service**  
   Encapsulate all map-related functionality behind an abstract interface.  
 - **Dependency Injection**  
-  Use runtime injection to provide the specific map implementation to the UI, allowing easy replacement.
+  Use runtime injection to provide the specific map provider to the UI, allowing easy replacement.
 
 ---
 
@@ -23,7 +23,7 @@ Design the Remote User Interface (RUI) to have loosely coupled components with w
 - **Source**  
   Developer  
 - **Stimulus**  
-  Switch map provider from VCL-based implementation to another provider  
+  Switch map provider from Google Maps to another provider  
 - **Artifact**  
   Map rendering module in the Remote User Interface (RUI)  
 - **Environment**  
@@ -34,8 +34,8 @@ Design the Remote User Interface (RUI) to have loosely coupled components with w
   Integration completed in under 4 hours; no unintended side effects observed  
 
 ### 🛠 Approach 1: Abstract Common Services with Map Interface  
-- Define a common abstract interface for map services that all map providers implement, including the existing VCL-based one.  
-- The RUI depends only on this interface, allowing the map provider to be swapped by replacing the implementation.  
+- Define a common abstract interface for map services that all map providers.  
+- The RUI depends only on this interface, allowing the map provider to be swapped.  
 - This reduces coupling between UI and map components and increases cohesion within map modules.  
 
 ### 🛠 Approach 2: Modularize Map Component with Dependency Injection  
@@ -57,7 +57,6 @@ Design the Remote User Interface (RUI) to have loosely coupled components with w
   - Provides type safety and static guarantees.  
   - Well suited when map provider changes are infrequent.  
   - Encourages high cohesion within map functionality and reduces coupling to the UI.  
-  - Matches current VCL-based UI approach well.  
 - ⚠️ **Modularize Map Component with Dependency Injection**  
   - Preferred if map providers are expected to change frequently or dynamically.  
   - Adds runtime flexibility at a small performance cost.  
