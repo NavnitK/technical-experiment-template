@@ -10,10 +10,10 @@ The three types of requirements are:
    + The system shall allow users to receive real-time traffic updates 
 
 2. **Design Constraints**
-   + The system shall only interact with other systems via Publish/Subscribe 
+   + The system shall use a community-sourced mapping platform, allowing users to contribute and edit map data in real time 
 
 3. **Quality Attribute Requirements**
-   *Example:* .
+   + User-reported traffic incidents shall be updated to all nearby users within 5 seconds to support real-time navigation
 
 ## **Question 2**
 **For each of the design ideas below, indicate what tactic/pattern we discussed in class it corresponds to or is most directly related to.**
