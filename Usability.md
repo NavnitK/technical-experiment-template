@@ -6,11 +6,6 @@ An essential element to achieve this goal includes a codebase that is clean, wel
 has good test coverage, and is structured in a way that simplifies debugging and enhancements.
 
 # Specific Usability Issues to Solve
-- The user shall be able to pause live aircraft data updates in order to analyze specific aircraft without being overwhelmed by continuous real-time changes.
-- The user shall not be required to reconfigure settings such as IP address and map style upon each application launch; previously used preferences shall be automatically restored.
-- The user interface shall support uninterrupted interaction, even during network delays, data updates, or temporary disconnections.
-
-# 🎯 Specific Usability Issues to Solve
 The Remote User Interface (RUI) is intended for educational use by air traffic control students, who must interact with and analyze dynamic aircraft data in both real-time and playback modes. To ensure the system is intuitive, efficient, and minimizes cognitive load during operation, the following usability challenges have been identified:
 - **Data Overwhelm During Live Monitoring**  
   Allow users to pause updates to analyze specific aircraft without distraction.
@@ -69,7 +64,7 @@ Resiliency	High; data always collected locally	Moderate; depends on reliable com
 Extensibility	Moderate; buffering logic localized to UI	Limited; requires changes to source data system
 Modifiability	Easier to change within UI component	More complex; source and UI must coordinate
 
-### Rationale for Approach Selection
+### 🧠 Rationale for Approach Selection
 - ✅ **Deferred Data Rendering**  
   - Continuous data capture is important, regardless of UI state.
   - Quick UI responsiveness with minimal complexity is required.
