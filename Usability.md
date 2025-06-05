@@ -64,6 +64,7 @@ Modifiability	Easier to change within UI component	More complex; source and UI m
 
 ### 🧠 Rationale for Approach Selection
 - ✅ **Deferred Data Rendering**  
+  - **Pattern Used:** Observer + Command Pattern
   - Continuous data capture is important, regardless of UI state.
   - Quick UI responsiveness with minimal complexity is required.
   - Modifications should be limited to the UI side.
@@ -111,6 +112,7 @@ After evaluating both architectural approaches against key quality attributes �
 
 ### 🧠 Rationale for Approach Selection
 - ✅ **Choose _Local Settings Persistence_ if**:
+  - **Pattern Used:** Singleton + Repository Pattern
   - You want a **lightweight and fast** solution.
   - The system is **used on a single device** (e.g., student laptop).
   - Offline use and simplicity are more important than multi-user sync.
