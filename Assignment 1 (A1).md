@@ -17,11 +17,38 @@ The three types of requirements are:
 
 ## **Question 2**
 **For each of the design ideas below, indicate what tactic/pattern we discussed in class it corresponds to or is most directly related to.**
+For each of the design ideas below, indicate what tactic/pattern we discussed in class it corresponds to or is most directly related to.
+1. Configure two Docker containers that **interact frequently** to be deployed to the same node.
+2. Reduce the number of http endpoints that are visible in the DMZ.
+3. Replace a remote call (over the network) with a local call (in-process or in-vm).
+4. Require a token that identifies a valid user in all http requests.
+5. Break a 1000-LOC program into five separate programs.
+6. Have a synchronized replica of your data store configured so that primary and replica stores
+are always in sync.
+7. Use multiple threads to process different steps of a batch program in parallel.
+8. Make the sensors in a building alarm system periodically send a message to a central
+monitoring station.
+9. Add memory and increase the bandwidth in the supporting infrastructure.
+10. Use SHA-256 to generate a hash of message payloads.
+11. Follow PoLP when granting a group of users the rights to execute an operation
 
 ### **Answer 2**
+1. Performance: Reduce computational overhead
+2. Tactic: 
+3. Tactic: 
+4. Tactic: 
+5. Tactic: 
+6. Tactic: 
+7. Tactic: 
+8. Tactic: 
+9. Tactic: 
+10. Tactic: 
+11. Tactic: 
+
 
 ## **Question 3** (15 points)
 **Among the tactics studied in the reading assignment, which performance tactic can be used to implement the Cancel usability tactic? Justify your answer.**
+
 
 ### **Answer 3**
 
