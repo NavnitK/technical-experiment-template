@@ -34,16 +34,16 @@ monitoring station.
 
 ### **Answer 2**
 1. Performance: Reduce computational overhead
-2. Tactic: 
-3. Tactic: 
-4. Tactic: 
-5. Tactic: 
-6. Tactic: 
-7. Tactic: 
-8. Tactic: 
-9. Tactic: 
-10. Tactic: 
-11. Tactic: 
+2. Security: Limit exposure
+3. Modifiability: Redistribute Responsibilities. Performance: Co-locate communicating resources
+4. Security: Brokered authentication pattern
+5. Modifiability: Split module
+6. Availability: Active redundancy (hot spare)
+7. Performance: Manage Resources-> Introduce concurrency
+8. Availability: Heartbeat
+9. Performance scalability: Vertical scalability 
+10. Security tactics: Verify message integrity
+11. Security tactics: Resist Attacks: Limit access
 
 
 ## **Question 3** (15 points)
