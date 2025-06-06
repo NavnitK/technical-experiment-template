@@ -39,7 +39,7 @@ monitoring station.
 4. Security: Brokered authentication pattern
 5. Modifiability: Split module
 6. Availability: Active redundancy (hot spare)
-7. Performance: Manage Resources-> Introduce concurrency
+7. Performance: Manage Resources: Introduce concurrency
 8. Availability: Heartbeat
 9. Performance scalability: Vertical scalability 
 10. Security tactics: Verify message integrity
