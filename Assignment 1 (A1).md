@@ -46,14 +46,39 @@ monitoring station.
 11. Security tactics: Resist Attacks: Limit access
 
 
-## **Question 3** (15 points)
+## **Question 3**
 **Among the tactics studied in the reading assignment, which performance tactic can be used to implement the Cancel usability tactic? Justify your answer.**
 
 
 ### **Answer 3**
-Page 142 & 200
+Main context of **Cancel** usability tactics to support user initiative is as follows:
+- Independent command handler which listens to user action
+   - We can use **Introduce Concurrency** tactics in which we implement **Spawn threads** strategy to have independent listener
+   - We can use **Prioritize events** to provide cancel command to have higher priority over other commands
+- Terminate ongoing activity
+   - **Spawn thread** will invoke terminate operation
+   - We can use **Maintain multiple copies of computations** which will redirect new user request to one of available duplicate service
+- Free aquired resources
+   - Service that handles cancel command will gracefully terminate 
+   - We can use **Periodic cleaning** to cleanup of resources when graceful termination failed
+- Inform collaborating components
+   - **Spawned thread** will **prioritize** cancel event to multicast to all collaborating components
 
-## **Question 4** (20 points)
+
+## **Question 4**
 **Rewrite the quality attribute requirement that is part of your answer to question 1 in the form of a six-part quality attribute scenario. Identify each of the six parts.**
 
 ### **Answer 4**
+**Quality Attribute Requirement**
+   + User-reported traffic incidents shall be updated to all nearby users within 5 seconds to support real-time navigation
+
+This Quality attribute requirement focus on:
+   + Performance: New traffic incident shall be updated to all nearby users within 5 seconds latency
+
+Performance Quality attribute scenarios:
++ Source: Mobile User
++ Stimulus: Traffic incident
++ Artifict: Incident handler service
++ Environment: Normal mode
++ Response: Traffic incident event notification to all nearby users
++ Response measure: Traffic incident event received within 5 seconds by user within 5 km range
