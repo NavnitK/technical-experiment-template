@@ -81,4 +81,4 @@ Performance Quality attribute scenarios:
 + Artifict: Incident handler service
 + Environment: Normal mode
 + Response: Traffic incident event notification to all nearby users
-+ Response measure: Traffic incident event received within 5 seconds by user within 5 km range
++ Response measure: Traffic incident event received within 5 seconds by user within 5 km range radius
