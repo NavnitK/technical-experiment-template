@@ -76,7 +76,7 @@ This Quality attribute requirement focus on:
    + Performance: New traffic incident shall be updated to all nearby users within 5 seconds latency
 
 Performance Quality attribute scenarios:
-+ Source: Mobile User
++ Source: Waze Application Mobile User
 + Stimulus: Traffic incident
 + Artifict: Incident handler service
 + Environment: Normal mode
