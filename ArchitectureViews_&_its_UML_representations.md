@@ -1,0 +1,53 @@
+# Architectural Views and UML Diagrams
+
+- **Module View** (Static)
+  - Layered View
+    - Package Diagram
+    - Class Diagram (within layers)
+    - Component Diagram
+  - Decomposition View
+    - Package Diagram
+    - Class Diagram
+    - Component Diagram
+  - Uses View
+  - Ownership View
+  - Class/Package View
+    - Class Diagram
+    - Package Diagram
+
+- **Component & Connector View**
+  - Client-Server View
+    - Static: Component Diagram, Deployment Diagram
+    - Dynamic: Component Diagram, Sequence Diagram
+  - Pipe-and-Filter View
+    - Static: Component Diagram, Activity Diagram
+    - Dynamic: Sequence Diagram, Communication Diagram, Activity Diagram
+  - Publish-Subscribe View
+    - Static: Component Diagram
+    - Dynamic: Sequence Diagram, Communication Diagram
+  - Service-Oriented View
+    - Static: Component Diagram
+    - Dynamic: Sequence Diagram, Activity Diagram
+  - Peer-to-Peer View
+    - Static: Component Diagram, Deployment Diagram
+    - Dynamic: Sequence Diagram, Communication Diagram, Activity Diagram
+  - Shared Data View
+    - Static: Class Diagram, Component Diagram, Deployment Diagram
+    - Dynamic: Sequence Diagram, Activity Diagram, Communication Diagram
+
+- **Deployment View**
+  - Node Allocation View
+    - Static: Deployment Diagram
+    - Dynamic: Sequence Diagram (optional)
+  - Network Topology View
+    - Static: Deployment Diagram
+    - Dynamic: Sequence Diagram, Communication Diagram
+  - Physical View
+    - Static: Deployment Diagram
+    - Dynamic: Sequence Diagram, Communication Diagram
+  - Virtualized/Cloud View
+    - Static: Deployment Diagram, Component Diagram
+    - Dynamic: Sequence Diagram, Activity Diagram, Communication Diagram
+  - Redundancy/Fault Tolerance View
+    - Static: Deployment Diagram, Component Diagram
+    - Dynamic: Sequence Diagram, Communication Diagram, Activity Diagram
